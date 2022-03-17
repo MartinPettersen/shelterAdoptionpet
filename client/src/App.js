@@ -9,20 +9,29 @@ import Main from './components/Main';
 function App() {
 
   const [backendData, setBackendData] = useState([{}]);
+  const [counter, setCounter] = useState(0);
 
+  useEffect(async() => {
+    setCounter(counter + 1);
+    console.log(counter);
+  }, [backendData]);
 
-  useEffect(() => {
+  useEffect(async() => {
     console.log('test');
-    fetch("/api/animals").then(
+    await fetch("/api/animals").then(
       response => response.json()
     ).then(
       data => {
-        setBackendData(data);
-        console.log(data);
-
+        //console.log(data);
+        setBackendData([...data]);
+        //setBackendData([...backendData, ...data]);
+        //console.log(backendData);
+        
+        //console.log(data);
+        //console.log(data[0].name);
       }
     );
-    // console.log(backendData);
+    //console.log(backendData);
   }, []); 
   // .urls.regular
   // <p key={i}>{test}</p>
@@ -33,6 +42,7 @@ function App() {
       <Header />
       <Main backendData={backendData}/>  
       <Footer />
+
     </div>
   );
 }

@@ -1,14 +1,19 @@
 import React from 'react'
 
-const Main = ( {backendData }) => {
+const Main = ({ backendData }) => {
+  const [pictureCounter, setPictureCounter] = useState(0);
+
   return (
     <main className="main">
-        {(typeof backendData.test === 'undefined') ? (
+      {(typeof backendData === 'undefined') ? (
             <p>Find your friend today</p>
         ): (
-        backendData.test.map((test, i) => (
-        <img className="img" key={i} src={test.urls.regular} alt="adopt me plx" />
-        )))}
+        
+        backendData.map((test, i) => (
+        <img className="img" key={i} src={test.url} alt="adopt me plx" />
+        )))
+        }
+
   </main>
     )
 }
