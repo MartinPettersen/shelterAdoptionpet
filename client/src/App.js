@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from 'react'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Main from './components/Main';
+
 
 function App() {
 
@@ -26,26 +30,9 @@ function App() {
   // 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        {(typeof backendData.test === 'undefined') ? (
-          <p>Find your friend today</p>
-        ): (
-          backendData.test.map((test, i) => (
-            <img key={i} src={test.urls.regular} alt="adopt me plx" />
-        )))}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Main backendData={backendData}/>  
+      <Footer />
     </div>
   );
 }

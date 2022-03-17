@@ -14,7 +14,7 @@ const randomNumber = (top) => {
 
 const animalProfileCreator = (url, animal) => {
     const nameList =['Trofast', 'Passop', 'Arg', 'Steve', 'Anna', 'Snulte', 'Lisa'];
-    
+    console.log('reached profile creator');
     const animalProfile = {
         animal: animal,
         url: url,
@@ -25,10 +25,10 @@ const animalProfileCreator = (url, animal) => {
     return animalProfile;
 }
 
-const animalPopulator = async (listOfAnimals, animalType) => {
+const animalPopulator = (listOfAnimals, animalType) => {
+    console.log('reached animalPopulator');
     const newList = [];
-    //console.log(listOfAnimals[0]);
-    listOfAnimals.forEach(animal => console.log(animalProfileCreator(animal.urls.regular, animalType)));
+    return listOfAnimals.map(animal => animalProfileCreator(animal.urls.regular, animalType));
 
 }
 
@@ -55,11 +55,26 @@ app.get("/api/animals", async ( req, res) => {
     //    console.log(response.data.results[0].urls.regular);
     //    console.log(animalProfileCreator("testurl", "Albert"));
     //    console.log('----');
-        testImg.push(...response.data.results);
-        animalPopulator(testImg, 'cat');
-        res.send({"test": testImg})
+        // console.log(typeof response.data.results);
+
+        // console.log(response.data.results[0]);
         
-    });
+        // testImg.push.apply(testImg, response.data.results);
+        const newArray = testImg.concat(response.data.results);
+        // console.log(newArray);
+        return newArray
+    }).then( response => {
+        //console.log('her');
+        // console.log(typeof response);
+        const test = animalPopulator(response, 'cat');
+        console.log(test);
+        return test;
+    }).then( response => {
+        console.log(response);
+        res.send(response);
+    }
+
+    );
 
 });
 
