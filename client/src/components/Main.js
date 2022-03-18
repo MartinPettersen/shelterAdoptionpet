@@ -3,7 +3,7 @@ import Card from './Card';
 
 
 
-const Main = ({ backendData, setBackendData, deletePet }) => {
+const Main = ({ backendData, setBackendData, deletePet, nextPet, pictureCounter, setPictureCounter, toggleInfo }) => {
  
 
   return (
@@ -11,7 +11,7 @@ const Main = ({ backendData, setBackendData, deletePet }) => {
       {(typeof backendData === 'undefined') ? (
             <p>Find your friend today</p>
         ): (
-            <Card backendData={backendData} setBackendData={setBackendData} deletePet={deletePet}/>
+            <Card backendData={backendData} setBackendData={setBackendData} deletePet={deletePet} nextPet={nextPet} pictureCounter={pictureCounter} setPictureCounter={setPictureCounter} toggleInfo={toggleInfo}/>
         )
         }
 

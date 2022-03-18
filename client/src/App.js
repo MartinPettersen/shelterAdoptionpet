@@ -19,6 +19,7 @@ function App() {
 }]);
   const [counter, setCounter] = useState(0);
   const [animalCounter, setAnimalCounter] = useState(0);
+  const [pictureCounter, setPictureCounter] = useState(0);
 
   const deletePet = (petId) => {
     setBackendData(backendData.filter((pet) => {
@@ -26,9 +27,17 @@ function App() {
     }))
   }
 
+  const toggleInfo = (id) => {
+    setBackendData(backendData.map((pet) => pet.id === id ? { ...pet, shown: !pet.shown } : pet))
+  }
+
+  const nextPet = () => {
+    // deletePet(backendData[pictureCounter].id);
+    setPictureCounter(pictureCounter + 1);
+  } 
+
   useEffect(async() => {
     setCounter(counter + 1);
-    console.log(counter);
   }, [backendData]);
 
   useEffect(async() => {
@@ -61,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Main backendData={backendData} setBackendData={setBackendData} deletePet={deletePet}/>  
+      <Main backendData={backendData} setBackendData={setBackendData} deletePet={deletePet} nextPet={nextPet} pictureCounter={pictureCounter} setPictureCounter={setPictureCounter} toggleInfo={toggleInfo}/>  
       <Footer />
 
     </div>

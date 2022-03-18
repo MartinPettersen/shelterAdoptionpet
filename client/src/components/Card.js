@@ -1,18 +1,7 @@
 import React, {useState} from 'react'
 
-const Card = ({ backendData, setBackendData, deletePet }) => {
-    const [pictureCounter, setPictureCounter] = useState(0);
-
-    const toggleInfo = (id) => {
-      console.log(id);
-      setBackendData(backendData.map((pet) => pet.id === id ? { ...pet, shown: !pet.shown } : pet))
-    }
-  
-    const nextPet = () => {
-      // deletePet(backendData[pictureCounter].id);
-      setPictureCounter(pictureCounter + 1);
-    } 
-    console.log(backendData[pictureCounter].url);
+const Card = ({ backendData, setBackendData, deletePet, nextPet, pictureCounter, setPictureCounter, toggleInfo }) => {
+    
   return (
     <div className="card">
                 
