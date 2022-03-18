@@ -56,7 +56,7 @@ function App() {
   }, [animalCounter]);
 
   useEffect(async() => {
-    await fetch("/api/animals/cat").then(
+    await fetch("http://localhost:8080/api/animals/cat").then(
       response => response.json()
     ).then(
       data => {

@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/shelterAdoptionpet/static/css/main.ac959b1e.css",
-    "main.js": "/shelterAdoptionpet/static/js/main.7f9570e8.js",
+    "main.js": "/shelterAdoptionpet/static/js/main.e60f5d84.js",
     "static/js/787.c4e7f8f9.chunk.js": "/shelterAdoptionpet/static/js/787.c4e7f8f9.chunk.js",
     "static/media/logo.svg": "/shelterAdoptionpet/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/shelterAdoptionpet/index.html",
     "main.ac959b1e.css.map": "/shelterAdoptionpet/static/css/main.ac959b1e.css.map",
-    "main.7f9570e8.js.map": "/shelterAdoptionpet/static/js/main.7f9570e8.js.map",
+    "main.e60f5d84.js.map": "/shelterAdoptionpet/static/js/main.e60f5d84.js.map",
     "787.c4e7f8f9.chunk.js.map": "/shelterAdoptionpet/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ac959b1e.css",
-    "static/js/main.7f9570e8.js"
+    "static/js/main.e60f5d84.js"
   ]
 }
