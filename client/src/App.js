@@ -48,7 +48,6 @@ function App() {
         response => response.json()
       ).then(
         data => {
-          console.log(data);
           setBackendData([...backendData, ...data]);
           setAnimalCounter(animalCounter + 1);
         }
