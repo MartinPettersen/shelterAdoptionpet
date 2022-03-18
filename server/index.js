@@ -3,6 +3,7 @@ const axios = require('axios');
 const express = require('express');
 const { uuid } = require('uuidv4');
 const app = express ();
+const cors = require('cors');
 
 const randomNumber = (top) => {
     return Math.floor(Math.random() * top);
@@ -44,6 +45,7 @@ const animalPopulator = (listOfAnimals, animalType) => {
     return listOfAnimals.map(animal => animalProfileCreator(animal.urls.regular, animalType));
 }
 
+app.use(cors());
 app.get("/api/animals/:test", async ( req, res) => {
     let testImg = []
     let testPicture = await axios.get('https://api.unsplash.com/search/photos/', 
