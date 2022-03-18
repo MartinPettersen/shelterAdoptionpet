@@ -8,8 +8,23 @@ import Main from './components/Main';
 
 function App() {
 
-  const [backendData, setBackendData] = useState([{}]);
+  const [backendData, setBackendData] = useState([{
+    id: 0,
+    animal: 'Perfect',
+    url: `https://images.unsplash.com/photo-1491833485966-73cfb9ccea53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzMTA3NzR8MHwxfHNlYXJjaHw0fHxjYXQlN0R8ZW58MHwxfHx8MTY0NzUxOTMxMg&ixlib=rb-1.2.1&q=80&w=1080`,
+    motto: 'Change lives by Adopting',
+    shown: false,
+    age: 0,
+    name: 'Your Future Friend'
+}]);
   const [counter, setCounter] = useState(0);
+  const [animalCounter, setAnimalCounter] = useState(0);
+
+  const deletePet = (petId) => {
+    setBackendData(backendData.filter((pet) => {
+      return pet.id != petId;
+    }))
+  }
 
   useEffect(async() => {
     setCounter(counter + 1);
@@ -17,30 +32,36 @@ function App() {
   }, [backendData]);
 
   useEffect(async() => {
-    console.log('test');
-    await fetch("/api/animals").then(
+    const animalList = ['cat', 'dog', 'bunny', 'duck', 'puppy', 'kitten'];
+
+    if (animalCounter < animalList.length){
+      await fetch("/api/animals/"+animalList[animalCounter]).then(
+        response => response.json()
+      ).then(
+        data => {
+          console.log(data);
+          setBackendData([...backendData, ...data]);
+          setAnimalCounter(animalCounter + 1);
+        }
+      );
+    }
+  }, [animalCounter]);
+
+  useEffect(async() => {
+    await fetch("/api/animals/cat").then(
       response => response.json()
     ).then(
       data => {
-        //console.log(data);
-        setBackendData([...data]);
-        //setBackendData([...backendData, ...data]);
-        //console.log(backendData);
-        
-        //console.log(data);
-        //console.log(data[0].name);
+        setBackendData([...backendData,...data]);
+        setAnimalCounter(animalCounter + 1);
       }
     );
-    //console.log(backendData);
   }, []); 
-  // .urls.regular
-  // <p key={i}>{test}</p>
-  // <img key={i} src={test} alt="adopt me plx" />
-  // 
+
   return (
     <div className="App">
       <Header />
-      <Main backendData={backendData}/>  
+      <Main backendData={backendData} setBackendData={setBackendData} deletePet={deletePet}/>  
       <Footer />
 
     </div>

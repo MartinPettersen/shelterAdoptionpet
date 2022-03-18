@@ -1,17 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Card from './Card';
 
-const Main = ({ backendData }) => {
-  const [pictureCounter, setPictureCounter] = useState(0);
+
+
+const Main = ({ backendData, setBackendData, deletePet }) => {
+ 
 
   return (
     <main className="main">
       {(typeof backendData === 'undefined') ? (
             <p>Find your friend today</p>
         ): (
-        
-        backendData.map((test, i) => (
-        <img className="img" key={i} src={test.url} alt="adopt me plx" />
-        )))
+            <Card backendData={backendData} setBackendData={setBackendData} deletePet={deletePet}/>
+        )
         }
 
   </main>

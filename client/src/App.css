@@ -14,8 +14,8 @@
 }
 
 .main {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: black;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +23,23 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.card{
+  min-height: 80vh;
+}
 .img{
-  width: 10rem;
-  height: 15rem;
+  width: 12rem;
+  height: 17rem;
+  border-radius: 15px;
+}
+.info{
+  display: none;
+}
+.shown{
+  display: block;
+  text-align: left;
 }
 .header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -38,14 +48,31 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+h1 {
+  text-shadow: 2px 0 0 grey;
+  text-shadow: -2px 0 0 grey;
+  text-shadow: 0 2px 0 grey;
+}
+h1 {
+  text-shadow: 2px 0 0 grey;
+  text-shadow: -2px 0 0 grey;
+  text-shadow: 0 2px 0 grey;
+}
+button {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 1px 1px 3px 1px black;
+  margin: 0.1rem;
+  background-color: lightgrey;
+  order: 1;
+  text-align: center;
+}
+p {
+  font-size: 1.1rem;
+  text-shadow: 2px 0 0 grey;
+  text-shadow: -2px 0 0 grey;
+  text-shadow: 0 2px 0 grey;
+}
 .footer {
   background-color: #282c34;
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
