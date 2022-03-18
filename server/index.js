@@ -1,81 +1,69 @@
 const dotenv = require('dotenv').config();
-// import fetch from "node-fetch"
-// const fetch = require('node-fetch');
 const axios = require('axios');
 const express = require('express');
-// import 'dotenv/config';
-//import express from 'express;'
+const { uuid } = require('uuidv4');
 const app = express ();
-
 
 const randomNumber = (top) => {
     return Math.floor(Math.random() * top);
 };
 
-const animalProfileCreator = (url, animal) => {
+const getLifeMotto = (animal) => {
+    let motto = '';
+    if (animal === 'cat'){
+        motto = 'MJAU';
+    } else if (animal === 'dog'){
+        motto = 'Bark!';
+    } else if (animal === 'bunny'){
+        motto = '#&/!(&#%';
+    } else if (animal === 'duck'){
+        motto = 'Quack';
+    } else if (animal === 'puppy'){
+        motto = 'voff';
+    } else if (animal === 'kitten'){
+        motto = 'mjau';
+    } 
+    return motto;
+}
+const animalProfileCreator = (url, animalType) => {
     const nameList =['Trofast', 'Passop', 'Arg', 'Steve', 'Anna', 'Snulte', 'Lisa'];
-    console.log('reached profile creator');
     const animalProfile = {
-        animal: animal,
+        id: uuid(),
+        animal: animalType,
         url: url,
+        motto: getLifeMotto(animalType),
         shown: false,
         age: randomNumber(7),
-        name: nameList[randomNumber(nameList.length)]
+        name: nameList[randomNumber(nameList.length)],
+        contact: '555-555-555',
     }
     return animalProfile;
 }
 
 const animalPopulator = (listOfAnimals, animalType) => {
-    console.log('reached animalPopulator');
-    const newList = [];
     return listOfAnimals.map(animal => animalProfileCreator(animal.urls.regular, animalType));
-
 }
 
-const randomArrayItem = (array) => {
-    return array[randomNumber(array.length)];
-};
-
-app.get("/api/animals", async ( req, res) => {
-    const animalList = ['cat', 'dog', 'bunny', 'duck', 'puppy', 'kitten'];
-    
-    console.log('animal: ' + randomArrayItem(animalList));
-
+app.get("/api/animals/:test", async ( req, res) => {
     let testImg = []
     let testPicture = await axios.get('https://api.unsplash.com/search/photos/', 
     { params: 
-        { query : 'cat}',
+        { query : `${req.params.test}}`,
         orientation: 'portrait'
     }, headers: {
         Authorization:
         'Client-ID '+ process.env.ACCESS_KEY
     }
     }).then(response => {
-    //    console.log('----');
-    //    console.log(response.data.results[0].urls.regular);
-    //    console.log(animalProfileCreator("testurl", "Albert"));
-    //    console.log('----');
-        // console.log(typeof response.data.results);
-
-        // console.log(response.data.results[0]);
-        
-        // testImg.push.apply(testImg, response.data.results);
         const newArray = testImg.concat(response.data.results);
-        // console.log(newArray);
         return newArray
     }).then( response => {
-        //console.log('her');
-        // console.log(typeof response);
-        const test = animalPopulator(response, 'cat');
-        console.log(test);
+        const test = animalPopulator(response, req.params.test);
         return test;
     }).then( response => {
-        console.log(response);
         res.send(response);
     }
-
     );
-
 });
 
 app.listen(8080, () => (console.log("server started on port 8080")));
