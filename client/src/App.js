@@ -44,7 +44,7 @@ function App() {
     const animalList = ['cat', 'dog', 'bunny', 'duck', 'puppy', 'kitten'];
 
     if (animalCounter < animalList.length){
-      await fetch("/api/animals/"+animalList[animalCounter]).then(
+      await fetch("http://localhost:8080/api/animals/"+animalList[animalCounter]).then(
         response => response.json()
       ).then(
         data => {
