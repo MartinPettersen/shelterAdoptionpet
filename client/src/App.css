@@ -32,6 +32,7 @@
   display: none;
 }
 .shown{
+  width: 12rem;
   display: block;
   text-align: left;
 }
@@ -48,15 +49,9 @@
 
 }
 h1 {
-  text-shadow: 2px 0 0 grey;
-  text-shadow: -2px 0 0 grey;
-  text-shadow: 0 2px 0 grey;
   font-family: Arial, Helvetica, sans-serif;
 }
 h3 {
-  text-shadow: 2px 0 0 grey;
-  text-shadow: -2px 0 0 grey;
-  text-shadow: 0 2px 0 grey;
   font-family: Arial, Helvetica, sans-serif;
 }
 button {
@@ -71,9 +66,6 @@ button {
 }
 p {
   font-size: 1.1rem;
-  text-shadow: 2px 0 0 grey;
-  text-shadow: -2px 0 0 grey;
-  text-shadow: 0 2px 0 grey;
   font-family: Arial, Helvetica, sans-serif;
 }
 .footer {
