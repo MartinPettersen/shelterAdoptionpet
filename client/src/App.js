@@ -44,7 +44,7 @@ function App() {
     const animalList = ['cat', 'dog', 'bunny', 'duck', 'puppy', 'kitten'];
 
     if (animalCounter < animalList.length){
-      await fetch("http://localhost:8080/api/animals/"+animalList[animalCounter]).then(
+      await fetch("https://protected-spire-98083.herokuapp.com//api/animals/"+animalList[animalCounter]).then(
         response => response.json()
       ).then(
         data => {
@@ -56,7 +56,7 @@ function App() {
   }, [animalCounter]);
 
   useEffect(async() => {
-    await fetch("http://localhost:8080/api/animals/cat").then(
+    await fetch("https://protected-spire-98083.herokuapp.com/api/animals/cat").then(
       response => response.json()
     ).then(
       data => {
